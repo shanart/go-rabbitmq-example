@@ -15,9 +15,8 @@ func failOnError(err error, msg string) {
 }
 
 type RConsumer struct {
-	conn *amqp.Connection
-	ch   *amqp.Channel
-	q    amqp.Queue
+	ch *amqp.Channel
+	q  amqp.Queue
 }
 
 func (r *RConsumer) Listen() error {
@@ -81,9 +80,8 @@ func CreateRConsumer(conn *amqp.Connection, exhangeName, queueName string) *RCon
 	failOnError(err, "Failed to bind a queue")
 
 	return &RConsumer{
-		conn: conn,
-		ch:   ch,
-		q:    q,
+		ch: ch,
+		q:  q,
 	}
 }
 
